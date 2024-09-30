@@ -117,7 +117,7 @@ const GlobalChat = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col h-[600px] max-w-2xl mx-auto">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col h-[600px] max-w-2xl ml-10">
       <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-t-lg">
         <h3 className="text-lg font-semibold">Global Chat</h3>
       </div>
