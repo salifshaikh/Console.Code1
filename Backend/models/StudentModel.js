@@ -1,15 +1,19 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose');
 
-// Improved Connection with Error Handling and Options
-mongoose.connect(
-  'mongodb://127.0.0.1:27017/EDU_LIFT'
-).then(() => console.log('Connected to MongoDB successfully'))
- .catch(err => console.error('Error connecting to MongoDB:', err));
- 
+mongoose.connect('mongodb://127.0.0.1:27017/EDU_LIFT', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => {
+  console.log('MongoDB connected');
+})
+.catch(err => {
+  console.error('MongoDB connection error:', err);
+});
+
 
 // Define the student schema with validation and structure improvements
 const studentSchema = new mongoose.Schema({
-  fullname: {
+  name: {
     type: String,
     required: true,  // Ensures fullname is provided
     trim: true,      // Removes whitespace from both sides of the string
@@ -52,7 +56,7 @@ const studentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  Sc_in_perc: {
+  school_perc: {
     type: Number,
     min: 0,     // Ensures percentage is at least 0
     max: 100,   // Ensures percentage is at most 100
@@ -62,6 +66,6 @@ const studentSchema = new mongoose.Schema({
 });
 
 // Export the model based on the schema
-export default mongoose.model('Student', studentSchema);
+export default mongoose.model('student', studentSchema); 
 
 

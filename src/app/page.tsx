@@ -9,10 +9,6 @@ import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
 import Video from "@/components/Video";
 import Brands from "@/components/Brands";
-// import Axios from 'axios';
-import { useEffect, useState } from "react";
-import Aos from "../../node_modules/aos";
-// import "bower_components/aos/dist/aos.css"
 
 export default function Home() {
   // const [data, setData] = useState('');
@@ -21,14 +17,7 @@ export default function Home() {
   //   const response = await Axios.get('http://localhost:4000/signup');
   //   setData(response.data);
   // };
-
-  useEffect(()=>{
-    Aos.init(
-      {
-          duration:1200
-      }
-    );
-  },[])
+  
   return (
     <>
       <ScrollUp />
