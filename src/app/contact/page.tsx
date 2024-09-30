@@ -1,20 +1,27 @@
+"use client"
 import Breadcrumb from "@/components/Common/Breadcrumb";
 import Contact from "@/components/Contact";
-
+import { Rating } from 'react-simple-star-rating'
 import { Metadata } from "next";
+import { useState } from "react";
 
-export const metadata: Metadata = {
-  title: "Contact Page",
-  description: "This is Contact Page",
-  // other metadata
-};
+
+
+
+
+  const handleRating = (rate: number) => {
+    setRating(rate)
+
+    // other logic
+  }
 
 const ContactPage = () => {
+  const [rating, setRating] = useState(0)
   return (
     <>
       <Breadcrumb
         pageName="Contact Page"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
+        description="Ask any queries !"
       />
 
       <Contact />
