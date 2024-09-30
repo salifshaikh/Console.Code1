@@ -25,6 +25,7 @@
     "react-modal-video": "^2.0.1",
     "react-simple-star-rating": "^5.1.7",
     "react-slick": "^0.30.2",
+    "react-stars": "^2.2.5",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
