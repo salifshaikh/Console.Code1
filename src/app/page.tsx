@@ -9,6 +9,8 @@ import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
 import Video from "@/components/Video";
 import Brands from "@/components/Brands";
+import { Metadata } from "next";
+
 // import Axios from 'axios';
 // import { useEffect, useState } from "react";
 
