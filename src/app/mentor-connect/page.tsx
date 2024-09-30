@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react";
+import Link from "next/link";
 
 interface Mentor {
   id: number;
@@ -62,7 +63,8 @@ export default function MentorConnectPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredMentors.length > 0 ? (
           filteredMentors.map((mentor) => (
-            <div
+            <Link href={"/dashboard"}>
+              <div
               key={mentor.id}
               className="p-6 bg-white dark:bg-[#2C303B] rounded-lg shadow-lg text-center"
               data-aos="fade-in"
@@ -81,7 +83,14 @@ export default function MentorConnectPage() {
                   <li key={index}>- {subject}</li>
                 ))}
               </ul>
+
+              <Link href="/blog">
+              <button  className="rounded-sm bg-primary mt-2 px-8 py-2 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80">
+                Chat
+              </button>
+              </Link>
             </div>
+            </Link>
           ))
         ) : (
           <p className="text-center text-gray-500 dark:text-gray-400">
