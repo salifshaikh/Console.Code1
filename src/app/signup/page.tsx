@@ -1,14 +1,20 @@
-import Link from "next/link";
+"use client"
 
+import Link from "next/link";
+import React, { useState } from 'react';
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Sign Up",
-  description: "This is Sign Up",
-  // other metadata
-};
+
+
+
 
 const SignupPage = () => {
+
+ const [role, setRole] = useState("");
+  
+  const handleRoleChange = (event) => {
+    setRole(event.target.value);
+  };
   return (
     <>
       <section className="relative z-10 overflow-hidden pb-16 pt-36 md:pb-20 lg:pb-28 lg:pt-[180px]">
@@ -22,7 +28,7 @@ const SignupPage = () => {
                 <p className="mb-11 text-center text-base font-medium text-body-color">
                   It’s totally free and super easy
                 </p>
-                <button className="border-stroke dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none">
+                {/* <button className="border-stroke dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none">
                   <span className="mr-3">
                     <svg
                       width="20"
@@ -57,9 +63,9 @@ const SignupPage = () => {
                     </svg>
                   </span>
                   Sign in with Google
-                </button>
+                </button> */}
 
-                <button className="border-stroke dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none">
+                {/* <button className="border-stroke dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none">
                   <span className="mr-3">
                     <svg
                       fill="currentColor"
@@ -72,112 +78,240 @@ const SignupPage = () => {
                     </svg>
                   </span>
                   Sign in with Github
-                </button>
-                <div className="mb-8 flex items-center justify-center">
+                </button> */}
+                {/* <div className="mb-8 flex items-center justify-center">
                   <span className="hidden h-[1px] w-full max-w-[60px] bg-body-color/50 sm:block"></span>
                   <p className="w-full px-5 text-center text-base font-medium text-body-color">
                     Or, register with your email
                   </p>
                   <span className="hidden h-[1px] w-full max-w-[60px] bg-body-color/50 sm:block"></span>
-                </div>
-                <form>
-                  <div className="mb-8">
-                    <label
-                      htmlFor="name"
-                      className="mb-3 block text-sm text-dark dark:text-white"
-                    >
-                      {" "}
-                      Full Name{" "}
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="Enter your full name"
-                      className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
-                    />
-                  </div>
-                  <div className="mb-8">
-                    <label
-                      htmlFor="email"
-                      className="mb-3 block text-sm text-dark dark:text-white"
-                    >
-                      {" "}
-                      Work Email{" "}
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="Enter your Email"
-                      className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
-                    />
-                  </div>
-                  <div className="mb-8">
-                    <label
-                      htmlFor="password"
-                      className="mb-3 block text-sm text-dark dark:text-white"
-                    >
-                      {" "}
-                      Your Password{" "}
-                    </label>
-                    <input
-                      type="password"
-                      name="password"
-                      placeholder="Enter your Password"
-                      className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
-                    />
-                  </div>
-                  <div className="mb-8 flex">
-                    <label
-                      htmlFor="checkboxLabel"
-                      className="flex cursor-pointer select-none text-sm font-medium text-body-color"
-                    >
-                      <div className="relative">
-                        <input
-                          type="checkbox"
-                          id="checkboxLabel"
-                          className="sr-only"
-                        />
-                        <div className="box mr-4 mt-1 flex h-5 w-5 items-center justify-center rounded border border-body-color border-opacity-20 dark:border-white dark:border-opacity-10">
-                          <span className="opacity-0">
-                            <svg
-                              width="11"
-                              height="8"
-                              viewBox="0 0 11 8"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M10.0915 0.951972L10.0867 0.946075L10.0813 0.940568C9.90076 0.753564 9.61034 0.753146 9.42927 0.939309L4.16201 6.22962L1.58507 3.63469C1.40401 3.44841 1.11351 3.44879 0.932892 3.63584C0.755703 3.81933 0.755703 4.10875 0.932892 4.29224L0.932878 4.29225L0.934851 4.29424L3.58046 6.95832C3.73676 7.11955 3.94983 7.2 4.1473 7.2C4.36196 7.2 4.55963 7.11773 4.71406 6.9584L10.0468 1.60234C10.2436 1.4199 10.2421 1.1339 10.0915 0.951972ZM4.2327 6.30081L4.2317 6.2998C4.23206 6.30015 4.23237 6.30049 4.23269 6.30082L4.2327 6.30081Z"
-                                fill="#3056D3"
-                                stroke="#3056D3"
-                                strokeWidth="0.4"
-                              />
-                            </svg>
-                          </span>
-                        </div>
-                      </div>
-                      <span>
-                        By creating account means you agree to the
-                        <a href="#0" className="text-primary hover:underline">
-                          {" "}
-                          Terms and Conditions{" "}
-                        </a>
-                        , and our
-                        <a href="#0" className="text-primary hover:underline">
-                          {" "}
-                          Privacy Policy{" "}
-                        </a>
-                      </span>
-                    </label>
-                  </div>
-                  <div className="mb-6">
-                    <button className="shadow-submit dark:shadow-submit-dark flex w-full items-center justify-center rounded-sm bg-primary px-9 py-4 text-base font-medium text-white duration-300 hover:bg-primary/90">
-                      Sign up
-                    </button>
-                  </div>
-                </form>
+                </div> */}
+                  <form>
+      {/* Role Selection */}
+      <div className="mb-8">
+        <label
+          htmlFor="role"
+          className="mb-3 block text-sm text-dark dark:text-white"
+        >
+          Select Role
+        </label>
+        <select
+          name="role"
+          value={role}
+          onChange={handleRoleChange}
+          className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
+        >
+          
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
+          <option value="parent">Parent</option>
+        </select>
+      </div>
+
+      {/* Common Fields */}
+      <div className="mb-8">
+        <label
+          htmlFor="name"
+          className="mb-3 block text-sm text-dark dark:text-white"
+        >
+          Full Name
+        </label>
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter your full name"
+          className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
+        />
+      </div>
+      <div className="mb-8">
+        <label
+          htmlFor="email"
+          className="mb-3 block text-sm text-dark dark:text-white"
+        >
+          Email
+        </label>
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your Email"
+          className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
+        />
+      </div>
+      <div className="mb-8">
+        <label
+          htmlFor="passwrod"
+          className="mb-3 block text-sm text-dark dark:text-white"
+        >
+          Password
+        </label>
+        <input
+          type="password"
+          name="name"
+          placeholder="Enter your password"
+          className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
+        />
+      </div>
+      
+      {/* Role-Specific Fields */}
+      {role === "student" && (
+        <>
+          <div className="mb-8">
+            <label htmlFor="age" className="mb-3 block text-sm text-dark dark:text-white">
+              Age
+            </label>
+            <input
+              type="number"
+              name="age"
+              placeholder="Enter your age"
+              className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
+            />
+          </div>
+
+          <div className="mb-8">
+            <label htmlFor="gender" className="mb-3 block text-sm text-dark dark:text-white">
+              Gender
+            </label>
+            <input
+              type="text"
+              name="gender"
+              placeholder="Enter your gender"
+              className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
+            />
+          </div>
+
+          <div className="mb-8">
+            <label htmlFor="school" className="mb-3 block text-sm text-dark dark:text-white">
+              School/College
+            </label>
+            <input
+              type="text"
+              name="school"
+              placeholder="Enter your school/college"
+              className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
+            />
+          </div>
+
+          <div className="mb-8">
+            <label htmlFor="degree" className="mb-3 block text-sm text-dark dark:text-white">
+              Highest Degree
+            </label>
+            <select
+              name="degree"
+              className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
+            >
+              <option value="10th">10th</option>
+              <option value="12th">12th</option>
+              <option value="other">Other Degree</option>
+            </select>
+          </div>
+          <div className="mb-8">
+            <label htmlFor="percentage" className="mb-3 block text-sm text-dark dark:text-white">
+              
+              Score in Percentage
+            </label>
+            <input
+              type="text"
+              name="school"
+              placeholder="%"
+              className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
+            />
+            
+          </div>
+        </>
+      )}
+
+      {role === "parent" && (
+        <>
+          <div className="mb-8">
+            <label htmlFor="studentName" className="mb-3 block text-sm text-dark dark:text-white">
+              Student Name
+            </label>
+            <input
+              type="text"
+              name="studentName"
+              placeholder="Enter your student's name"
+              className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
+            />
+          </div>
+
+          <div className="mb-8">
+            <label htmlFor="studentId" className="mb-3 block text-sm text-dark dark:text-white">
+              Student ID
+            </label>
+            <input
+              type="text"
+              name="studentId"
+              placeholder="Enter your student's ID"
+              className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
+            />
+          </div>
+        </>
+      )}
+{role === "teacher" && (
+  <>
+    <div className="mb-8">
+      <label htmlFor="qualification" className="mb-3 block text-sm text-dark dark:text-white">
+        Highest Qualification
+      </label>
+      <input
+        type="text"
+        name="qualification"
+        placeholder="Qualification"
+        className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
+      />
+    </div>
+
+    <div className="mb-8">
+      <label htmlFor="subjects" className="mb-3 block text-sm text-dark dark:text-white">
+        What will you teach?
+      </label>
+      <div className="flex flex-wrap gap-3">
+        <label className="flex items-center space-x-2">
+          <input type="checkbox" name="subjects" value="math" />
+          <span>Math</span>
+        </label>
+        <label className="flex items-center space-x-2">
+          <input type="checkbox" name="subjects" value="science" />
+          <span>Science</span>
+        </label>
+        <label className="flex items-center space-x-2">
+          <input type="checkbox" name="subjects" value="history" />
+          <span>History</span>
+        </label>
+        <label className="flex items-center space-x-2">
+          <input type="checkbox" name="subjects" value="english" />
+          <span>English</span>
+        </label>
+        <label className="flex items-center space-x-2">
+          <input type="checkbox" name="subjects" value="computer-science" />
+          <span>Computer Science</span>
+        </label>
+        <label className="flex items-center space-x-2">
+          <input type="checkbox" name="subjects" value="physics" />
+          <span>Physics</span>
+        </label>
+        <label className="flex items-center space-x-2">
+          <input type="checkbox" name="subjects" value="chemistry" />
+          <span>Chemistry</span>
+        </label>
+        <label className="flex items-center space-x-2">
+          <input type="checkbox" name="subjects" value="biology" />
+          <span>Biology</span>
+        </label>
+      </div>
+    </div>
+  </>
+)}
+
+
+      <div className="mb-6">
+        <button className="shadow-submit dark:shadow-submit-dark flex w-full items-center justify-center rounded-sm bg-primary px-9 py-4 text-base font-medium text-white duration-300 hover:bg-primary/90">
+          Sign up
+        </button>
+      </div>
+    </form>
                 <p className="text-center text-base font-medium text-body-color">
-                  Already using Startup?{" "}
+                  Already using EduLift?{" "}
                   <Link href="/signin" className="text-primary hover:underline">
                     Sign in
                   </Link>
