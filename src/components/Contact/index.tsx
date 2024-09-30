@@ -1,6 +1,29 @@
 import NewsLatterBox from "./NewsLatterBox";
 
 const Contact = () => {
+  const faqs = [
+    {
+      question: "What services does your website offer?",
+      answer: "Our website offers a wide range of services including [list your main services here]. We cater to [your target audience] and aim to [your main goal]."
+    },
+    {
+      question: "How can I create an account?",
+      answer: "To create an account, click on the 'Sign Up' button in the top right corner of our homepage. Follow the prompts to enter your details and verify your email address."
+    },
+    {
+      question: "Is my personal information secure?",
+      answer: "Yes, we take data security very seriously. We use industry-standard encryption and security measures to protect your personal information. For more details, please review our Privacy Policy."
+    },
+    {
+      question: "How can I get technical support?",
+      answer: "For technical support, you can use the contact form on this page, email our support team at support@example.com, or call our helpline at (123) 456-7890 during business hours."
+    },
+    {
+      question: "Do you offer refunds?",
+      answer: "Yes, we offer refunds within 30 days of purchase if you're not satisfied with our service. Please refer to our Refund Policy for more details and conditions."
+    }
+  ];
+
   return (
     <section id="contact" className="overflow-hidden py-16 md:py-20 lg:py-28">
       <div className="container">
@@ -71,10 +94,29 @@ const Contact = () => {
                   </div>
                 </div>
               </form>
+
             </div>
           </div>
           <div className="w-full px-4 lg:w-5/12 xl:w-4/12">
             <NewsLatterBox />
+          </div>
+        </div>
+      {/* FAQs Section */}
+        <div className="mt-16">
+          <h2 className="mb-8 text-3xl font-bold text-black dark:text-white">
+            Frequently Asked Questions
+          </h2>
+          <div className="grid gap-8 md:grid-cols-2">
+            {faqs.map((faq, index) => (
+              <div key={index} className="rounded-lg bg-white p-5 shadow-md dark:bg-gray-dark">
+                <h3 className="mb-3 text-xl font-semibold text-black dark:text-white">
+                  {faq.question}
+                </h3>
+                <p className="text-body-color dark:text-body-color-dark">
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

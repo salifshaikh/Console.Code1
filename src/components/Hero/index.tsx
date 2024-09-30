@@ -49,7 +49,6 @@ const Hero = (props) => {
                 </h1>
                 <p className="mb-12 text-base !leading-relaxed text-black dark:text-white sm:text-lg md:text-xl">
                 We are dedicated to leveling the playing field by providing access to educational resources and support for every student, no matter their background.
-                Our platform connects learners to the tools, mentorship, and opportunities they need to succeed in today’s world.
                 </p>
                 <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <Link
