@@ -10,7 +10,7 @@ import menuData from "./menuData";
 const Header = () => {
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
-  const [isUser, setUser] = useState(false); // Change this state to true for logged-in users
+  const [isUser, setUser] = useState(true); // Change this state to true for logged-in users
   const navbarToggleHandler = () => {
     setNavbarOpen(!navbarOpen);
   };

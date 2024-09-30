@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { useTheme } from "next-themes";
-import { Sun, Moon, Book, Star, FileText, Coins, Users, Calendar, CheckSquare } from 'lucide-react';
+import { Sun, Moon, Book, Star, FileText, Coins, Users, Calendar, CheckSquare, Compass } from 'lucide-react';
 
 const Dashboard = () => {
   const [role, setRole] = useState('student');
@@ -13,10 +13,10 @@ const Dashboard = () => {
 
   const StudentProfile = () => (
     <ProfileCard
-      name="John Doe"
-      college="XYZ University"
-      email="john.doe@example.com"
-      imageUrl="/path/to/student.jpg" // Replace with the actual image path
+      name="Tripti Dimri"
+      college="Amity University"
+      email="tripteee77@yahoo.com"
+      imageUrl="/images/header/pfp.jpg" // Replace with the actual image path
     />
   );
 
@@ -49,6 +49,138 @@ const Dashboard = () => {
     </div>
   );
 
+  const Modal = ({ isOpen, onClose, children }) => {
+    if (!isOpen) return null;
+
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg max-w-md w-full">
+          <div className="flex justify-end">
+            <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
+              &times;
+            </button>
+          </div>
+          {children}
+        </div>
+      </div>
+    );
+  };
+
+  const CareerPredictor = () => {
+    const [showQuiz, setShowQuiz] = useState(false);
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [scores, setScores] = useState({
+      technical: 0,
+      creative: 0,
+      social: 0,
+      analytical: 0,
+    });
+    const [result, setResult] = useState('');
+  
+    const questions = [
+      "Do you enjoy solving complex problems?",
+      "Are you creative and imaginative?",
+      "Do you like working with people?",
+      "Are you detail-oriented?",
+      "Do you enjoy working with computers and technology?",
+      "Do you like expressing yourself through art or writing?",
+      "Are you good at resolving conflicts?",
+      "Do you enjoy analyzing data and finding patterns?",
+      "Are you interested in how things work?",
+      "Do you enjoy planning and organizing events?"
+    ];
+  
+    const handleAnswer = (answer) => {
+      const newScores = { ...scores };
+      if (currentQuestion % 4 === 0) newScores.technical += answer;
+      else if (currentQuestion % 4 === 1) newScores.creative += answer;
+      else if (currentQuestion % 4 === 2) newScores.social += answer;
+      else newScores.analytical += answer;
+  
+      setScores(newScores);
+  
+      if (currentQuestion < 9) {
+        setCurrentQuestion(currentQuestion + 1);
+      } else {
+        // Calculate result
+        const maxScore = Math.max(newScores.technical, newScores.creative, newScores.social, newScores.analytical);
+        let career = '';
+        if (maxScore === newScores.technical) career = 'Software Developer';
+        else if (maxScore === newScores.creative) career = 'Graphic Designer';
+        else if (maxScore === newScores.social) career = 'Human Resources Manager';
+        else career = 'Data Analyst';
+        setResult(career);
+      }
+    };
+  
+    const resetQuiz = () => {
+      setShowQuiz(false);
+      setCurrentQuestion(0);
+      setScores({
+        technical: 0,
+        creative: 0,
+        social: 0,
+        analytical: 0,
+      });
+      setResult('');
+    };
+  
+    return (
+      <Card title="Career Predictor" icon={<Compass />}>
+        <button 
+          onClick={() => setShowQuiz(true)}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Start Career Quiz
+        </button>
+        <Modal isOpen={showQuiz} onClose={() => setShowQuiz(false)}>
+          <h2 className="text-xl font-bold mb-4">Career Predictor Quiz</h2>
+          {!result && (
+            <div>
+              <p className="mb-2">{questions[currentQuestion]}</p>
+              <div className="grid grid-cols-2 gap-2">
+                <button 
+                  onClick={() => handleAnswer(0)}
+                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  Not at all
+                </button>
+                <button 
+                  onClick={() => handleAnswer(1)}
+                  className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  Somewhat
+                </button>
+                <button 
+                  onClick={() => handleAnswer(2)}
+                  className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  Very much
+                </button>
+                <button 
+                  onClick={() => handleAnswer(3)}
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  Absolutely
+                </button>
+              </div>
+            </div>
+          )}
+          {result && (
+            <div>
+              <p>Based on your answers, you might enjoy a career as a: <strong>{result}</strong></p>
+              <button 
+                onClick={resetQuiz}
+                className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Take Quiz Again
+              </button>
+            </div>
+          )}
+        </Modal>
+      </Card>
+    );
+  };
   const StudentDashboard = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       <Card title="Progress Tracker" icon={<CheckSquare />}>
@@ -69,9 +201,9 @@ const Dashboard = () => {
       <Card title="Community Activity" icon={<Users />}>
         <p>Join 3 active discussions</p>
       </Card>
+      <CareerPredictor />
     </div>
   );
-
   const TeacherDashboard = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       <Card title="Students" icon={<Users />}>

@@ -2,16 +2,14 @@
 import React, { useState } from 'react'
 import { useTheme} from "next-themes";
 import { Rating } from 'react-simple-star-rating'
+import ReactStars from '../../../node_modules/react-stars'
 
 
 const NewsLatterBox = () => {
   const { theme } = useTheme();
-  const [rating, setRating] = useState(0)
-
-  const handleRating = (rate: number) => {
-    setRating(rate)
-
-    // other logic
+  const [ratingVal, setRatingVal] = useState(0);
+  const ratingChanged = (newRating) => {
+    setRatingVal(newRating);
   }
 
   return (
@@ -30,12 +28,10 @@ const NewsLatterBox = () => {
           className="border-stroke mb-4 w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
         ></textarea>
         <div className="mb-4 flex justify-center items-center flex-row">
-  <Rating
-    onClick={handleRating}
-    size={30}
-    transition
-    showTooltip
-  />
+        <ReactStars value={ratingVal} count={5} size={40} color2={'#ffd700'} onChange={ratingChanged}/>
+        <div>
+        {ratingVal}
+        </div>
 </div>
 
         <input
