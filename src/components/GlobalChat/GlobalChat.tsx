@@ -1,21 +1,94 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Send, User } from 'lucide-react';
+
+const botNames = ['Alice', 'Bob', 'Charlie', 'Diana'];
+const botMessages = [
+  "How's everyone doing today?",
+  "I'm working on an exciting new project!",
+  "Did you hear about the latest tech news?",
+  "What's your favorite programming language?",
+  "I love collaborating with this team!",
+  "Any interesting challenges you're tackling?",
+  "Remember to take breaks and stay hydrated!",
+  "Has anyone tried the new JavaScript framework?",
+  "I'm looking forward to our next meetup!",
+  "Don't forget to commit your code regularly!",
+];
 
 const GlobalChat = () => {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
   const currentUser = 'ashmit';
+  const chatContainerRef = useRef(null);
+  const [isNearBottom, setIsNearBottom] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const randomBot = botNames[Math.floor(Math.random() * botNames.length)];
+      const randomMessage = botMessages[Math.floor(Math.random() * botMessages.length)];
+      addMessage(randomMessage, randomBot);
+    }, 5000); // Bot messages every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (isNearBottom) {
+      scrollToBottom();
+    }
+  }, [messages]);
+
+  const scrollToBottom = () => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  };
+
+  const handleScroll = () => {
+    if (chatContainerRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = chatContainerRef.current;
+      const bottomThreshold = 100; // pixels from bottom
+      setIsNearBottom(scrollHeight - (scrollTop + clientHeight) < bottomThreshold);
+    }
+  };
+
+  const addMessage = (text, sender) => {
+    const newMessage = {
+      text,
+      sender,
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    };
+    setMessages(prevMessages => [...prevMessages, newMessage]);
+  };
 
   const handleSendMessage = (e) => {
     e.preventDefault();
     if (inputMessage.trim()) {
-      const newMessage = {
-        text: inputMessage,
-        sender: currentUser,
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-      };
-      setMessages([...messages, newMessage]);
+      addMessage(inputMessage, currentUser);
       setInputMessage('');
+      setIsNearBottom(true); // Force scroll to bottom when user sends a message
+      
+      // Bot response
+      setTimeout(() => {
+        const randomBot = botNames[Math.floor(Math.random() * botNames.length)];
+        const botResponse = generateBotResponse(inputMessage);
+        addMessage(botResponse, randomBot);
+      }, 1000);
+    }
+  };
+
+  const generateBotResponse = (userMessage) => {
+    const lowercaseMessage = userMessage.toLowerCase();
+    if (lowercaseMessage.includes('hello') || lowercaseMessage.includes('hi')) {
+      return "Hello there! How can I assist you today?";
+    } else if (lowercaseMessage.includes('project')) {
+      return "That sounds interesting! What kind of project are you working on?";
+    } else if (lowercaseMessage.includes('help')) {
+      return "I'd be happy to help! What do you need assistance with?";
+    } else if (lowercaseMessage.includes('thanks') || lowercaseMessage.includes('thank you')) {
+      return "You're welcome! Let me know if you need anything else.";
+    } else {
+      return "That's an interesting point! Can you tell me more about it?";
     }
   };
 
@@ -48,7 +121,11 @@ const GlobalChat = () => {
       <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-t-lg">
         <h3 className="text-lg font-semibold">Global Chat</h3>
       </div>
-      <div className="flex-grow overflow-y-auto p-4">
+      <div 
+        ref={chatContainerRef}
+        className="flex-grow overflow-y-auto p-4"
+        onScroll={handleScroll}
+      >
         {messages.map((message, index) => (
           <MessageBubble key={index} message={message} />
         ))}

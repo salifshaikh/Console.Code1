@@ -70,7 +70,7 @@ const ResourceManagement = () => {
   );
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 w-full max-w-3xl mx-auto mt-10">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 w-full max-w-3xl mx-auto mt-10 mb-10">
       <h3 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-white">Resource Management</h3>
       <div className="flex mb-6">
         <input
