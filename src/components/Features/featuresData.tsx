@@ -1,59 +1,57 @@
-import { Feature } from "@/types/feature";
-
 const featuresData: Feature[] = [
   {
     id: 1,
     icon: (
       <img src="/images/featureIcon.jpg" alt="Crafted for Startups" className="w-10 h-10" />
     ),
-    title: "Crafted for Startups",
+    title: "Crafted for Inclusivity",
     paragraph:
-      "Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.",
+      "Designed with every learner in mind, our platform offers equitable access to high-quality education resources regardless of geographic, economic, or social barriers.",
   },
   {
-    id: 1,
+    id: 2,
     icon: (
-      <img src="/images/featureIcon.jpg" alt="Crafted for Startups" className="w-10 h-10" />
+      <img src="/images/featureIcon.jpg" alt="High-quality Design" className="w-10 h-10" />
     ),
-    title: "High-quality Design",
+    title: "High-Quality Learning Resources",
     paragraph:
-      "Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.",
+      "Access a wide range of expertly curated, high-quality educational materials tailored to diverse learning needs, ensuring everyone has the tools they need to succeed.",
   },
   {
-    id: 1,
+    id: 3,
     icon: (
-      <img src="/images/featureIcon.jpg" alt="Crafted for Startups" className="w-10 h-10" />
+      <img src="/images/featureIcon.jpg" alt="Next.js 13" className="w-10 h-10" />
     ),
-    title: "Next.js 13 (Latest)",
+    title: "Cutting-Edge Technology",
     paragraph:
-      "Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.",
+      "Powered by Next.js 13, our platform is optimized for speed and performance, offering a seamless and scalable experience for both educators and learners.",
   },
   {
-    id: 1,
+    id: 4,
     icon: (
-      <img src="/images/featureIcon.jpg" alt="Crafted for Startups" className="w-10 h-10" />
+      <img src="/images/featureIcon.jpg" alt="Tailwind CSS" className="w-10 h-10" />
     ),
-    title: "Tailwind CSS",
+    title: "Tailored for Accessibility",
     paragraph:
-      "Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.",
+      "Utilizing Tailwind CSS, we provide a responsive and accessible design, ensuring that the platform works effortlessly across all devices and assists learners with disabilities.",
   },
   {
-    id: 1,
+    id: 5,
     icon: (
-      <img src="/images/featureIcon.jpg" alt="Crafted for Startups" className="w-10 h-10" />
+      <img src="/images/featureIcon.jpg" alt="Fully Customizable" className="w-10 h-10" />
     ),
-    title: "Fully Customizable",
+    title: "Fully Customizable Learning Paths",
     paragraph:
-      "Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.",
+      "Allow learners to create personalized learning paths based on their interests and needs, ensuring a unique and effective educational journey for each individual.",
   },
   {
-    id: 1,
+    id: 6,
     icon: (
-      <img src="/images/featureIcon.jpg" alt="Crafted for Startups" className="w-10 h-10" />
+      <img src="/images/featureIcon.jpg" alt="Free and Open-Source" className="w-10 h-10" />
     ),
-    title: "Free and Open-Source",
+    title: "Free and Open Access",
     paragraph:
-      "Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.",
+      "Our platform remains free and open-source, aligning with our mission to break down barriers and democratize education for underprivileged and underserved communities.",
   },
 ];
 export default featuresData;
