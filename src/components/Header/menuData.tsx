@@ -10,7 +10,7 @@ const menuData: Menu[] = [
   {
     id: 2,
     title: "Mentor Connect",
-    path: "/about",
+    path: "/mentor-connect",
     newTab: false,
   },
   {
@@ -22,14 +22,14 @@ const menuData: Menu[] = [
   {
     id: 3,
     title: "Community",
-    path: "/contact",
+    path: "/blog",
     newTab: false,
   },
   {
     id: 4,
     title: "Contact Us",
     newTab: false,
-    path: "/blog-sidebar", 
+    path: "/contact", 
       },
 ];
 export default menuData;
