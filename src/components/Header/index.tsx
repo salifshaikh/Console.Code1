@@ -5,11 +5,12 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
+import Spline from "@splinetool/react-spline";
 
 const Header = () => {
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
-  const [isUser, setUser] = useState(false); // Change this state to true for logged-in users
+  const [isUser, setUser] = useState(true); // Change this state to true for logged-in users
   const navbarToggleHandler = () => {
     setNavbarOpen(!navbarOpen);
   };
@@ -126,7 +127,7 @@ const Header = () => {
                 </nav>
               </div>
               <div className="flex items-center justify-end pr-16 lg:pr-0">
-                {!isUser && (
+                {!isUser ? (
                   <>
                     <Link
                       href="/signin"
@@ -141,6 +142,33 @@ const Header = () => {
                       Sign Up
                     </Link>
                   </>
+                ):(
+                  <div>
+                     <Link
+                href="/"
+                className={`header-logo block w-full ${
+                  sticky ? "py-5 lg:py-2" : "py-8"
+                } `}
+              >
+              
+              <Image
+                  src="/images/header/profile_icon2.png"
+                  alt="logo"
+                  width={35}
+                  height={35}
+                  className=" dark:hidden "
+                  
+                />
+                <Image
+                  src="/images/header/profile_icon_dark.png"
+                  alt="logo"
+                  width={35}
+                  height={35}
+                  className="hidden dark:block bg-white rounded-full"
+                />
+          
+              </Link>
+                  </div>
                 )}
                 <div>
                   <ThemeToggler />
