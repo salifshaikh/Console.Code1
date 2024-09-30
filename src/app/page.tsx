@@ -9,20 +9,20 @@ import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
 import Video from "@/components/Video";
 import Brands from "@/components/Brands";
-// import Axios from 'axios';
-// import { useEffect, useState } from "react";
+import Axios from 'axios';
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  // const [data, setData] = useState('');
+  const [data, setData] = useState('');
 
-  // const getData = async () => {
-  //   const response = await Axios.get('http://localhost:4000/getData');
-  //   setData(response.data);
-  // };
+  const getData = async () => {
+    const response = await Axios.get('http://localhost:4000/signup');
+    setData(response.data);
+  };
 
-  // useEffect(() => { 
-  //   getData();
-  // }, []);
+  useEffect(() => { 
+    getData();
+  }, []);
 
   return (
     <>
