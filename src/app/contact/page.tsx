@@ -9,11 +9,6 @@ import { useState } from "react";
 
 
 
-  const handleRating = (rate: number) => {
-    setRating(rate)
-
-    // other logic
-  }
 
 const ContactPage = () => {
   const [rating, setRating] = useState(0)
