@@ -9,7 +9,7 @@ const Features = () => {
         <div className="container">
           <SectionTitle
             title="Cutting-Edge Features to Elevate Your Experience"
-            paragraph="Explore a suite of advanced features designed to streamline processes, enhance productivity, and deliver an unparalleled user experience. Each feature is crafted with precision to meet modern standards, ensuring you stay ahead in a fast-paced digital world."
+            paragraph="Explore a suite of advanced features designed to streamline processes, enhance productivity, and deliver an unparalleled user experience."
             center
           />
 
