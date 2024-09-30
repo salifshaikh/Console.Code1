@@ -109,7 +109,9 @@ const Header = () => {
                     {menuData.map((menuItem, index) => (
                       <li key={index} className="group relative">
                         <Link
-                          href={isUser ? menuItem.path : "/signin"} // Conditional path based on isUser state
+                          href={ isUser || menuItem.title === "Home" || menuItem.title === "Contact Us"
+                            ? menuItem.path
+                            : "/signin"} // Conditional path based on isUser state
                           className={`flex py-2 text-base lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${
                             currentPath === menuItem.path
                               ? "text-primary dark:text-white"
