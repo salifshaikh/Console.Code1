@@ -1,59 +1,57 @@
-import { Feature } from "@/types/feature";
-
 const featuresData: Feature[] = [
   {
     id: 1,
     icon: (
-      <img src="/images/featureIcon.jpg" alt="Crafted for Startups" className="w-10 h-10" />
+      <img src="/images/features/feature1.png" alt="Crafted for Startups" className="w-10 h-10" />
     ),
-    title: "Crafted for Startups",
+    title: "Progress Tracker",
     paragraph:
-      "Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.",
+"Monitor your learning progress with real-time tracking and personalized insights.",
   },
   {
-    id: 1,
+    id: 2,
     icon: (
-      <img src="/images/featureIcon.jpg" alt="Crafted for Startups" className="w-10 h-10" />
+      <img src="/images/features/feature2.png" alt="High-quality Design" className="w-10 h-10" />
     ),
-    title: "High-quality Design",
+    title: "High-Quality Learning Resources",
     paragraph:
-      "Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.",
+      "Access a wide range of expertly curated, high-quality educational materials tailored to diverse learning needs, ensuring everyone has the tools they need to succeed.",
   },
   {
-    id: 1,
+    id: 3,
     icon: (
-      <img src="/images/featureIcon.jpg" alt="Crafted for Startups" className="w-10 h-10" />
+      <img src="/images/features/feature3.jpeg" alt="Next.js 13" className="w-10 h-10" />
     ),
-    title: "Next.js 13 (Latest)",
+    title: "Gamified Learning",
     paragraph:
-      "Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.",
+"Earn rewards and achievements as you complete learning milestones, making education engaging and fun.",
   },
   {
-    id: 1,
+    id: 4,
     icon: (
-      <img src="/images/featureIcon.jpg" alt="Crafted for Startups" className="w-10 h-10" />
+      <img src="/images/features/feature4.avif" alt="Tailwind CSS" className="w-10 h-10" />
     ),
-    title: "Tailwind CSS",
+    title: "AI Chatbot",
     paragraph:
-      "Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.",
+"Get instant support and answers to your queries 24/7 through our intelligent chatbot.",
   },
   {
-    id: 1,
+    id: 5,
     icon: (
-      <img src="/images/featureIcon.jpg" alt="Crafted for Startups" className="w-10 h-10" />
+      <img src="/images/features/feature5.png" alt="Fully Customizable" className="w-10 h-10" />
     ),
-    title: "Fully Customizable",
+    title: "Scholarships",
     paragraph:
-      "Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.",
-  },
+"Easily explore and apply for scholarships tailored to your academic needs and background." ,
+ },
   {
-    id: 1,
+    id: 6,
     icon: (
-      <img src="/images/featureIcon.jpg" alt="Crafted for Startups" className="w-10 h-10" />
+      <img src="/images/features/feature6.jpg" alt="Free and Open-Source" className="w-10 h-10" />
     ),
-    title: "Free and Open-Source",
+    title: "Free and Open Access",
     paragraph:
-      "Tuae nam ex similique incidunt expedita exerci tationem laudantium. Repellendus quisquam numquam perferendis earum sapiente non tempore? Fugit repellat ut maiores.",
+      "Our platform remains free and open-source, aligning with our mission to break down barriers and democratize education for underprivileged and underserved communities.",
   },
 ];
 export default featuresData;
