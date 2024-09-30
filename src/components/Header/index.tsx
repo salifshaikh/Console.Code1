@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
+import Spline from "@splinetool/react-spline";
 
 const Header = () => {
   // Navbar toggle
@@ -109,7 +110,9 @@ const Header = () => {
                     {menuData.map((menuItem, index) => (
                       <li key={index} className="group relative">
                         <Link
-                          href={isUser ? menuItem.path : "/signin"} // Conditional path based on isUser state
+                          href={ isUser || menuItem.title === "Home" || menuItem.title === "Contact Us"
+                            ? menuItem.path
+                            : "/signin"} // Conditional path based on isUser state
                           className={`flex py-2 text-base lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${
                             currentPath === menuItem.path
                               ? "text-primary dark:text-white"
@@ -124,7 +127,7 @@ const Header = () => {
                 </nav>
               </div>
               <div className="flex items-center justify-end pr-16 lg:pr-0">
-                {!isUser && (
+                {!isUser ? (
                   <>
                     <Link
                       href="/signin"
@@ -139,6 +142,33 @@ const Header = () => {
                       Sign Up
                     </Link>
                   </>
+                ):(
+                  <div>
+                     <Link
+                href="/"
+                className={`header-logo block w-full ${
+                  sticky ? "py-5 lg:py-2" : "py-8"
+                } `}
+              >
+              
+              <Image
+                  src="/images/header/profile_icon2.png"
+                  alt="logo"
+                  width={35}
+                  height={35}
+                  className=" dark:hidden "
+                  
+                />
+                <Image
+                  src="/images/header/profile_icon_dark.png"
+                  alt="logo"
+                  width={35}
+                  height={35}
+                  className="hidden dark:block bg-white rounded-full"
+                />
+          
+              </Link>
+                  </div>
                 )}
                 <div>
                   <ThemeToggler />
