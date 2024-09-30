@@ -34,7 +34,7 @@ export default function Home() {
       <Video />
       <Brands />
       <Testimonials />
-      <Pricing />
+     
     </>
   );
 }
