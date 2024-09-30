@@ -9,8 +9,8 @@ const Hero = () => {
 
   // Background images based on the theme
   const backgroundImage = theme === "dark"
-    ? 'url("https://img.freepik.com/premium-vector/modern-luxury-shiny-black-with-gold-lines-elegant-background_907220-1990.jpg")' // Dark mode image URL
-    : 'url("https://cdn.vectorstock.com/i/500p/84/65/abstract-white-monochrome-background-vector-32028465.jpg")'; // Light mode image URL
+    ? 'url("https://www.vecteezy.com/video/36933537-cartoon-education-student-elements-on-alpha-channel")' // Dark mode image URL
+    : 'url("https://www.vecteezy.com/video/2017221-school-education-equipment-tools")'; // Light mode image URL
 
   return (
     <>
