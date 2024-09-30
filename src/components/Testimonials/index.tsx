@@ -75,32 +75,35 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="dark:bg-bg-color-dark bg-gray-light relative z-10 py-16 md:py-20 lg:py-28">
-      <div className="container">
-        <SectionTitle
-          title="What Our Users Say"
-          paragraph="Hear from our satisfied users about their experiences with our platform."
-          center
-        />
+    <section className="dark:bg-bg-color-dark bg-gray-light relative z-10 py-16 md:py-20 lg:py-28 overflow-hidden">
+  <div className="container">
+    <SectionTitle
+      title="What Our Users Say"
+      paragraph="Hear from our satisfied users about their experiences with our platform."
+      center
+    />
 
-        <div className="testimonial-carousel">
-          {mounted ? (
-            <DynamicSlider {...settings}>
-              {testimonialData.map((testimonial) => (
-                <div key={testimonial.id} className="px-3">
-                  <SingleTestimonial testimonial={testimonial} />
-                </div>
-              ))}
-            </DynamicSlider>
-          ) : (
-            <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
-              {testimonialData.slice(0, 3).map((testimonial) => (
-                <SingleTestimonial key={testimonial.id} testimonial={testimonial} />
-              ))}
+    <div className="testimonial-carousel">
+      {mounted ? (
+        <DynamicSlider
+          {...settings}
+          className="relative"
+        >
+          {testimonialData.map((testimonial) => (
+            <div key={testimonial.id} className="px-3">
+              <SingleTestimonial testimonial={testimonial} />
             </div>
-          )}
+          ))}
+        </DynamicSlider>
+      ) : (
+        <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+          {testimonialData.slice(0, 3).map((testimonial) => (
+            <SingleTestimonial key={testimonial.id} testimonial={testimonial} />
+          ))}
         </div>
-      </div>
+      )}
+    </div>
+  </div>
 
       <div className="absolute right-0 top-5 z-[-1]">
         <svg
