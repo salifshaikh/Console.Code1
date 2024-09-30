@@ -9,8 +9,15 @@ import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
 import Video from "@/components/Video";
 import Brands from "@/components/Brands";
+<<<<<<< HEAD
 import Axios from 'axios';
 import { useEffect, useState } from "react";
+=======
+import { Metadata } from "next";
+
+// import Axios from 'axios';
+// import { useEffect, useState } from "react";
+>>>>>>> ef9187234fcd96c5621bfa827c09d18ad4d36f76
 
 export default function Home() {
   const [data, setData] = useState('');
@@ -34,7 +41,7 @@ export default function Home() {
       <Video />
       <Brands />
       <Testimonials />
-      <Pricing />
+     
     </>
   );
 }

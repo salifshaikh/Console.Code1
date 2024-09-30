@@ -97,3 +97,20 @@
     display: none !important;
   }
 }
+#chatbot-container {
+  height: ;
+  position: fixed;
+  bottom: 9rem;
+  right: 3rem;
+  background-color: black; /* Black background */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  z-index: 9999;
+}
+
+/* Chatbot iframe Styling */
+#chatbot-container iframe {
+  border: none;
+  background-color: white; /* White background for the chatbot */
+}

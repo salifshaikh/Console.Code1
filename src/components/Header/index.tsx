@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
-import Spline from "@splinetool/react-spline";
+
 
 const Header = () => {
   // Navbar toggle
@@ -145,7 +145,7 @@ const Header = () => {
                 ):(
                   <div>
                      <Link
-                href="/"
+                href="/dashboard"
                 className={`header-logo block w-full ${
                   sticky ? "py-5 lg:py-2" : "py-8"
                 } `}
