@@ -1,29 +1,33 @@
+"use client";
+
 import AboutSectionOne from "@/components/About/AboutSectionOne";
 import AboutSectionTwo from "@/components/About/AboutSectionTwo";
-import Blog from "@/components/Blog";
-import Brands from "@/components/Brands";
 import ScrollUp from "@/components/Common/ScrollUp";
-import Contact from "@/components/Contact";
 import Features from "@/components/Features";
 import Hero from "@/components/Hero";
 import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
 import Video from "@/components/Video";
-import { Metadata } from "next";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
-export const metadata: Metadata = {
-  title: "EduLift | Home",
-  description: "This is Home",
-  // other metadata
-};
+import Brands from "@/components/Brands";
+// import Axios from 'axios';
+// import { useEffect, useState } from "react";
 
 export default function Home() {
+  // const [data, setData] = useState('');
+
+  // const getData = async () => {
+  //   const response = await Axios.get('http://localhost:4000/getData');
+  //   setData(response.data);
+  // };
+
+  // useEffect(() => { 
+  //   getData();
+  // }, []);
+
   return (
     <>
       <ScrollUp />
-      <Hero />
+      <Hero/>
       <AboutSectionTwo />
       <Features />
       <AboutSectionOne />

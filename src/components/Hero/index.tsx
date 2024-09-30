@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 
-const Hero = () => {
+const Hero = (props) => {
   const { theme } = useTheme();
   const [backgroundVideo, setBackgroundVideo] = useState('');
 
@@ -37,7 +37,7 @@ const Hero = () => {
           style={{ filter: 'blur(10px)' }} // Increased blur intensity
         >
           <source src={backgroundVideo} type="video/mp4" />
-          Your browser does not support the video tag.
+           Your browser does not support the video tag.
         </video>
 
         <div className="container relative z-10">
