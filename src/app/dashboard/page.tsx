@@ -142,9 +142,7 @@ const Dashboard = () => {
             <option value="teacher">Teacher</option>
             <option value="parent">Parent</option>
           </select>
-          <button onClick={toggleTheme} className="p-2 rounded-full">
-            {theme === "dark" ? <Sun /> : <Moon />}
-          </button>
+          
         </div>
       </div>
       {role === 'student' && (

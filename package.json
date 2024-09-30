@@ -19,12 +19,7 @@
     "eslint-config-next": "^14.1.0",
     "lucide-react": "^0.446.0",
     "next": "^14.2.13",
-<<<<<<< HEAD
-    "next-themes": "^0.2.1",
-    "ngx-bar-rating": "^7.0.1",
-=======
     "next-themes": "^0.3.0",
->>>>>>> 27ae0a74bab01cc81a2ec7d813697f14fe59d456
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-modal-video": "^2.0.1",
