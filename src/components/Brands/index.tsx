@@ -12,7 +12,7 @@ const Brands = () => {
       <div className="container">
       <SectionTitle
             title="Our Partners"
-            paragraph="There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form."
+            paragraph="We are proud to collaborate with a diverse range of esteemed partners who share our vision and contribute to our success. Through their valuable support and expertise, we are able to continuously grow and offer innovative solutions."
             center
           />
         <div className="-mx-4 flex flex-wrap">

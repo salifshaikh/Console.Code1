@@ -1,4 +1,5 @@
 import NewsLatterBox from "./NewsLatterBox";
+import Testimonials from "@/components/Testimonials";
 
 const Contact = () => {
   const faqs = [
@@ -101,6 +102,7 @@ const Contact = () => {
             <NewsLatterBox />
           </div>
         </div>
+        <Testimonials />
       {/* FAQs Section */}
         <div className="mt-16">
           <h2 className="mb-8 text-3xl font-bold text-black dark:text-white">
