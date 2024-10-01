@@ -1,7 +1,9 @@
 "use client";
 import React, { useState } from 'react';
 import { useTheme } from "next-themes";
-import { Sun, Moon, Book, Star, FileText, Coins, Users, Calendar, CheckSquare, Compass } from 'lucide-react';
+import { Sun, Moon, Book, Star, FileText, Coins, Users, Calendar, CheckSquare, Compass, Clock } from 'lucide-react';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from '../../../node_modules/recharts/es6';
+
 
 const Dashboard = () => {
   const [role, setRole] = useState('student');
@@ -9,6 +11,91 @@ const Dashboard = () => {
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  const lectureData = [
+    { subject: 'Math', time: 3 },
+    { subject: 'Science', time: 4 },
+    { subject: 'History', time: 2 },
+    { subject: 'Literature', time: 3 },
+    { subject: 'Computer Science', time: 5 },
+  ];
+
+  const generateHeatmapData = () => {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct', 'Nov', 'Dec'];
+    const data = {};
+    months.forEach(month => {
+      data[month] = {};
+      for (let i = 1; i <= 31; i++) {
+        // Generate random activity level (0-4)
+        data[month][i] = Math.floor(Math.random() * 5);
+      }
+    });
+    return data;
+  };
+
+  const heatmapData = generateHeatmapData();
+
+  const LectureTimeGraph = () => (
+    <Card title="Time Spent on Lectures" icon={<Clock />}>
+      <ResponsiveContainer width="100%" height={200}>
+        <BarChart data={lectureData}>
+          <XAxis dataKey="subject" />
+          <YAxis />
+          <Tooltip />
+          <Bar dataKey="time" fill="#8884d8" />
+        </BarChart>
+      </ResponsiveContainer>
+    </Card>
+  );
+
+  const Heatmap = () => {
+    const cellSize = 10;
+    const gap = 2;
+    const getColor = (value) => {
+      const colors = [
+        '#161b22', // Dark background for no activity
+        '#0e4429', // Lightest green
+        '#006d32',
+        '#26a641',
+        '#39d353'  // Darkest green
+      ];
+      return colors[value];
+    };
+
+    return (
+      <Card title="Monthly Progress" icon={<Calendar />}>
+        <div className="overflow-x-auto bg-gray-900 p-4 rounded-lg">
+          <svg width={12 * (cellSize + gap) * 7} height={7 * (cellSize + gap) + 20}>
+            {Object.entries(heatmapData).map(([month, days], monthIndex) => (
+              <g key={month} transform={`translate(${monthIndex * (cellSize + gap) * 7}, 0)`}>
+                <text 
+                  x={3.5 * (cellSize + gap)} 
+                  y={7 * (cellSize + gap) + 15} 
+                  textAnchor="middle" 
+                  fontSize="10" 
+                  fill="#8b949e"
+                >
+                  {month}
+                </text>
+                {Object.entries(days).map(([day, value], dayIndex) => (
+                  <rect
+                    key={`${month}-${day}`}
+                    x={(dayIndex % 7) * (cellSize + gap)}
+                    y={Math.floor(dayIndex / 7) * (cellSize + gap)}
+                    width={cellSize}
+                    height={cellSize}
+                    fill={getColor(value)}
+                    rx={2}
+                    ry={2}
+                  />
+                ))}
+              </g>
+            ))}
+          </svg>
+        </div>
+      </Card>
+    );
   };
 
   const StudentProfile = () => (
@@ -202,6 +289,8 @@ const Dashboard = () => {
         <p>Join 3 active discussions</p>
       </Card>
       <CareerPredictor />
+      <LectureTimeGraph />
+      <Heatmap />
     </div>
   );
   const TeacherDashboard = () => (
