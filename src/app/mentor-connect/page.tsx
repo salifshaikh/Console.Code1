@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import { JitsiMeeting } from "@jitsi/react-sdk";
+import Courses from "../../components/Courses/Courses";
 
 interface Mentor {
   id: number;
@@ -15,26 +16,25 @@ interface Mentor {
 const mentorsData: Mentor[] = [
   {
     id: 1,
-    image: "/api/placeholder/100/100",
-    name: "John Doe",
+    image: "/images/about/prof1.webp",
+    name: "Dadasaheb",
     qualification: "PhD in Computer Science",
     subjects: ["Data Structures", "Algorithms", "Machine Learning"],
   },
   {
     id: 2,
-    image: "/api/placeholder/100/100",
-    name: "Jane Smith",
+    image: "/images/about/prof2.avif",
+    name: "Anjali Rai",
     qualification: "M.Sc in Physics",
     subjects: ["Quantum Mechanics", "Thermodynamics", "Optics"],
   },
   {
     id: 3,
-    image: "/api/placeholder/100/100",
-    name: "Ashmit Shelke",
+    image: "/images/about/prof3.avif",
+    name: "Ashmita Shelke",
     qualification: "B.Tech in Computer Science",
     subjects: ["DSA", "React", "OS"],
   },
-
 ];
 
 export default function MentorConnectPage() {
@@ -44,6 +44,8 @@ export default function MentorConnectPage() {
   const [isVideoCallActive, setIsVideoCallActive] = useState(false);
   const [jitsiApiObject, setJitsiApiObject] = useState<any>(null);
   const [callStatus, setCallStatus] = useState<"initializing" | "connected" | "error">("initializing");
+  const [isChatModalOpen, setIsChatModalOpen] = useState(false);
+  const [chatMessage, setChatMessage] = useState("");
 
   useEffect(() => {
     const filtered = mentorsData.filter(
@@ -72,8 +74,8 @@ export default function MentorConnectPage() {
 
   const handleJitsiIframeRef = (iframeRef: any) => {
     iframeRef.allow = "camera; microphone; fullscreen; display-capture; autoplay";
-    iframeRef.style.height = "600px"; // Set height to 600px
-    iframeRef.style.width = "100%"; // Set width to 100% for responsive design
+    iframeRef.style.height = "600px";
+    iframeRef.style.width = "100%";
   };
 
   const handleApiReady = (apiObj: any) => {
@@ -86,6 +88,21 @@ export default function MentorConnectPage() {
 
   const handleJitsiError = () => {
     setCallStatus("error");
+  };
+
+  const handleOpenChatModal = () => {
+    setIsChatModalOpen(true);
+  };
+
+  const handleCloseChatModal = () => {
+    setIsChatModalOpen(false);
+    setChatMessage(""); // Clear the message after closing the chat
+  };
+
+  const handleSendChatMessage = () => {
+    // You can add logic here to send the chat message to a server or backend if needed
+    alert(`Message Sent: ${chatMessage}`);
+    handleCloseChatModal(); // Close modal after sending
   };
 
   return (
@@ -127,12 +144,21 @@ export default function MentorConnectPage() {
                   <li key={index}>- {subject}</li>
                 ))}
               </ul>
-              <button
-                onClick={() => handleStartVideoCall(mentor)}
-                className="mt-2 rounded-sm bg-primary px-8 py-2 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
-              >
-                Start Video Call
-              </button>
+              <div className="flex justify-center gap-4 mt-4">
+                <button
+                  onClick={() => handleStartVideoCall(mentor)}
+                  className="rounded-sm bg-primary px-8 py-2 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
+                >
+                  Attend Meet
+                </button>
+                <button
+  onClick={handleOpenChatModal}
+  className="rounded-sm bg-secondary px-8 py-2 text-base font-semibold text-black duration-300 ease-in-out hover:bg-secondary/80 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600"
+>
+  Chat
+</button>
+
+              </div>
             </motion.div>
           ))
         ) : (
@@ -174,7 +200,7 @@ export default function MentorConnectPage() {
               }}
               userInfo={{
                 displayName: "ashmit",
-                email:"ashmit.shelke3135@gmail.com"
+                email: "ashmit.shelke3135@gmail.com",
               }}
               onApiReady={handleApiReady}
               getIFrameRef={handleJitsiIframeRef}
@@ -188,6 +214,36 @@ export default function MentorConnectPage() {
           </div>
         </div>
       )}
+
+      {isChatModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="w-full max-w-lg rounded-lg bg-white p-6">
+            <h2 className="mb-4 text-2xl font-bold">Chat with a Mentor</h2>
+            <textarea
+              value={chatMessage}
+              onChange={(e) => setChatMessage(e.target.value)}
+              rows={5}
+              placeholder="Type your message here..."
+              className="w-full rounded-sm border p-3 dark:bg-[#2C303B] dark:text-white"
+            />
+            <div className="mt-4 flex justify-end gap-4">
+              <button
+                onClick={handleCloseChatModal}
+                className="rounded-sm bg-gray-400 px-4 py-2 text-white"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleSendChatMessage}
+                className="rounded-sm bg-primary px-4 py-2 text-white"
+              >
+                Send
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      <Courses />
     </div>
   );
 }
