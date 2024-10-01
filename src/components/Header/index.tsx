@@ -1,30 +1,27 @@
+// File: src/components/Header/index.tsx
+
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
 import { useEffect, useState } from 'react';
-import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
-import Image from "next/image"; // Importing Image for Next.js optimized image handling
-import {app} from '../../../src/app/firebase';
-import prfimg from '../../../public/images/header/profile_icon.png'; // Importing profile icon
-import logoLight from '../../../public/images/logo/logo_light.png'; // Importing logos
-
+import { User, onAuthStateChanged, signOut } from 'firebase/auth';
+import Image from "next/image";
+import { auth } from '../../app/firebase';
+import prfimg from '../../../public/images/header/profile_icon.png';
+import logoLight from '../../../public/images/logo/logo_light.png';
 import logoDark from '../../../public/images/logo/logo_dark.png';
 
 const Header = () => {
-  // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
-  const [isUser, setIsUser] = useState(true); // State for tracking if a user is logged in
+  const [user, setUser] = useState<User | null>(null);
   const profileImage = prfimg;
 
   const navbarToggleHandler = () => {
     setNavbarOpen(!navbarOpen);
   };
 
-  const auth = getAuth(app);
-
-  // Sticky Navbar
   const [sticky, setSticky] = useState(false);
   const handleStickyNavbar = () => {
     if (window.scrollY >= 80) {
@@ -36,27 +33,24 @@ const Header = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", handleStickyNavbar);
-    return () => window.removeEventListener("scroll", handleStickyNavbar); // Cleanup on unmount
-    
+    return () => window.removeEventListener("scroll", handleStickyNavbar);
   }, []);
 
- /* useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setIsUser(!user);
-      console.log({isUser});  
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      console.log({currentUser});  
     });
 
-    return () => unsubscribe(); // Clean up subscription
-  }, []);*/
+    return () => unsubscribe();
+  }, []);
 
   const currentPath = usePathname();
 
-  // Logout function
   const handleLogout = async () => {
     try {
       await signOut(auth);
       console.log("User signed out successfully.");
-      setIsUser(false);
     } catch (error) {
       console.error("Error signing out: ", error);
     }
@@ -133,9 +127,9 @@ const Header = () => {
                       <li key={index} className="group relative">
                         <Link
                           href={
-                            isUser || menuItem.title === "Home" || menuItem.title === "Contact Us"
+                            user || menuItem.title === "Home" || menuItem.title === "Contact Us"
                               ? menuItem.path
-                              : "/signin" // Conditional path based on isUser state
+                              : "/signin"
                           }
                           className={`flex py-2 text-base lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${
                             currentPath === menuItem.path
@@ -151,7 +145,7 @@ const Header = () => {
                 </nav>
               </div>
               <div className="flex items-center justify-end pr-16 lg:pr-0">
-                {!isUser ? (
+                {!user ? (
                   <>
                     <Link
                       href="/signin"
@@ -174,7 +168,6 @@ const Header = () => {
                         sticky ? "py-5 lg:py-2" : "py-8"
                       } `}
                     >
-                      {/* Static Profile Image */}
                       <Image
                         src={profileImage}
                         alt="Profile"
@@ -183,7 +176,6 @@ const Header = () => {
                         className="rounded-full"
                       />
                     </Link>
-                    {/* Logout Button */}
                     <button
                       onClick={handleLogout}
                       className="ml-4 px-4 py-2 text-base font-medium text-dark hover:opacity-70 dark:text-white"
