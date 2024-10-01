@@ -6,7 +6,7 @@ import menuData from "./menuData";
 import { useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import Image from "next/image"; // Importing Image for Next.js optimized image handling
-import app from '/Users/suban0408/sem - 5 MPR/NEW_SIH/cs/src/Components/Firebase.js';
+import {app} from '../../../src/app/firebase';
 import prfimg from '../../../public/images/header/profile_icon.png'; // Importing profile icon
 import logoLight from '../../../public/images/logo/logo_light.png'; // Importing logos
 

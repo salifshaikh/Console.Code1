@@ -11,8 +11,6 @@ import Video from "@/components/Video";
 import Brands from "@/components/Brands";
 
 export default function Home() {
-<<<<<<< HEAD
-=======
   // const [data, setData] = useState('');
 
   // const getData = async () => {
@@ -20,7 +18,6 @@ export default function Home() {
   //   setData(response.data);
   // };
   
->>>>>>> 46821361152768727d4ef79f8e060d93b0fa7d17
   return (
     <>
       <ScrollUp />
