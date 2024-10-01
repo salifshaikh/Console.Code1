@@ -35,7 +35,7 @@ app.use(passport.session());
 // API Routes
 app.use('/', userRoute); // Your routes go here
 
-app.post('/dashboard', async (req, res) => {
+app.post('/register', async (req, res) => {
   const { name, school, school_perc, degree, gender, email, age, password } = req.body;
 
   try {

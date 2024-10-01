@@ -1,19 +1,28 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
+import { useEffect, useState } from 'react';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
+import Image from "next/image"; // Importing Image for Next.js optimized image handling
+import app from '/Users/suban0408/sem - 5 MPR/NEW_SIH/cs/src/Components/Firebase.js';
+import prfimg from '../../../public/images/header/profile_icon.png'; // Importing profile icon
+import logoLight from '../../../public/images/logo/logo_light.png'; // Importing logos
 
+import logoDark from '../../../public/images/logo/logo_dark.png';
 
 const Header = () => {
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
-  const [isUser, setUser] = useState(true); // Change this state to true for logged-in users
+  const [isUser, setIsUser] = useState(true); // State for tracking if a user is logged in
+  const profileImage = prfimg;
+
   const navbarToggleHandler = () => {
     setNavbarOpen(!navbarOpen);
   };
+
+  const auth = getAuth(app);
 
   // Sticky Navbar
   const [sticky, setSticky] = useState(false);
@@ -24,21 +33,34 @@ const Header = () => {
       setSticky(false);
     }
   };
+
   useEffect(() => {
     window.addEventListener("scroll", handleStickyNavbar);
-  });
+    return () => window.removeEventListener("scroll", handleStickyNavbar); // Cleanup on unmount
+    
+  }, []);
 
-  // Submenu handler
-  const [openIndex, setOpenIndex] = useState(-1);
-  const handleSubmenu = (index: number) => {
-    if (openIndex === index) {
-      setOpenIndex(-1);
-    } else {
-      setOpenIndex(index);
-    }
-  };
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsUser(!user);
+      console.log({isUser});  
+    });
+
+    return () => unsubscribe(); // Clean up subscription
+  }, []);
 
   const currentPath = usePathname();
+
+  // Logout function
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      console.log("User signed out successfully.");
+      setIsUser(false);
+    } catch (error) {
+      console.error("Error signing out: ", error);
+    }
+  };
 
   return (
     <>
@@ -59,14 +81,14 @@ const Header = () => {
                 } `}
               >
                 <Image
-                  src="/images/logo/logo_light.png"
+                  src={logoLight}
                   alt="logo"
                   width={140}
                   height={140}
-                  className=" dark:hidden"
+                  className="dark:hidden"
                 />
                 <Image
-                  src="/images/logo/logo_dark.png"
+                  src={logoDark}
                   alt="logo"
                   width={140}
                   height={140}
@@ -84,17 +106,17 @@ const Header = () => {
                 >
                   <span
                     className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
-                      navbarOpen ? " top-[7px] rotate-45" : " "
+                      navbarOpen ? " top-[7px] rotate-45" : ""
                     }`}
                   />
                   <span
                     className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
-                      navbarOpen ? "opacity-0 " : " "
+                      navbarOpen ? "opacity-0" : ""
                     }`}
                   />
                   <span
                     className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
-                      navbarOpen ? " top-[-8px] -rotate-45" : " "
+                      navbarOpen ? " top-[-8px] -rotate-45" : ""
                     }`}
                   />
                 </button>
@@ -110,9 +132,11 @@ const Header = () => {
                     {menuData.map((menuItem, index) => (
                       <li key={index} className="group relative">
                         <Link
-                          href={ isUser || menuItem.title === "Home" || menuItem.title === "Contact Us"
-                            ? menuItem.path
-                            : "/signin"} // Conditional path based on isUser state
+                          href={
+                            isUser || menuItem.title === "Home" || menuItem.title === "Contact Us"
+                              ? menuItem.path
+                              : "/signin" // Conditional path based on isUser state
+                          }
                           className={`flex py-2 text-base lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${
                             currentPath === menuItem.path
                               ? "text-primary dark:text-white"
@@ -142,32 +166,30 @@ const Header = () => {
                       Sign Up
                     </Link>
                   </>
-                ):(
-                  <div>
-                     <Link
-                href="/dashboard"
-                className={`header-logo block w-full ${
-                  sticky ? "py-5 lg:py-2" : "py-8"
-                } `}
-              >
-              
-              <Image
-                  src="/images/header/profile_icon2.png"
-                  alt="logo"
-                  width={35}
-                  height={35}
-                  className=" dark:hidden "
-                  
-                />
-                <Image
-                  src="/images/header/profile_icon_dark.png"
-                  alt="logo"
-                  width={35}
-                  height={35}
-                  className="hidden dark:block bg-white rounded-full"
-                />
-          
-              </Link>
+                ) : (
+                  <div className="flex items-center">
+                    <Link
+                      href="/dashboard"
+                      className={`header-logo block w-full ${
+                        sticky ? "py-5 lg:py-2" : "py-8"
+                      } `}
+                    >
+                      {/* Static Profile Image */}
+                      <Image
+                        src={profileImage}
+                        alt="Profile"
+                        width={35}
+                        height={35}
+                        className="rounded-full"
+                      />
+                    </Link>
+                    {/* Logout Button */}
+                    <button
+                      onClick={handleLogout}
+                      className="ml-4 px-4 py-2 text-base font-medium text-dark hover:opacity-70 dark:text-white"
+                    >
+                      Logout
+                    </button>
                   </div>
                 )}
                 <div>
