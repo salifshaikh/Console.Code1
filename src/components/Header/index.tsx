@@ -40,14 +40,14 @@ const Header = () => {
     
   }, []);
 
-  useEffect(() => {
+ /* useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setIsUser(!user);
       console.log({isUser});  
     });
 
     return () => unsubscribe(); // Clean up subscription
-  }, []);
+  }, []);*/
 
   const currentPath = usePathname();
 
