@@ -11,6 +11,13 @@ import Video from "@/components/Video";
 import Brands from "@/components/Brands";
 
 export default function Home() {
+  // const [data, setData] = useState('');
+
+  // const getData = async () => {
+  //   const response = await Axios.get('http://localhost:4000/signup');
+  //   setData(response.data);
+  // };
+  
   return (
     <>
       <ScrollUp />

@@ -88,7 +88,7 @@ const SignupPage = () => {
                       aria-placeholder="Select Role"
                       className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-[10px] py-3 pr-[10px] text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
                     >
-                      <option value="Select Role">Select Role</option>
+                     
                       <option value="student">Student</option>
                       <option value="teacher">Teacher</option>
                       <option value="parent">Parent</option>
@@ -165,6 +165,68 @@ const SignupPage = () => {
                           value={formData.gender}
                           onChange={handleInputChange}
                           placeholder="Enter your gender"
+                          className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
+                        />
+                      </div>
+                    </>
+                  )}
+                  {role === "teacher" && (
+                    <>
+                      <div className="mb-8">
+                        <label htmlFor="age" className="mb-3 block text-sm text-dark dark:text-white">
+                          Qualifications
+                        </label>
+                        <input
+                          type="text"
+                          name="age"
+                          value={formData.age}
+                          onChange={handleInputChange}
+                          placeholder="Enter your qualification"
+                          className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
+                        />
+                      </div>
+
+                      <div className="mb-8">
+                        <label htmlFor="gender" className="mb-3 block text-sm text-dark dark:text-white">
+                         What will you teach?
+                        </label>
+                        <input
+                          type="text"
+                          name="gender"
+                          value={formData.gender}
+                          onChange={handleInputChange}
+                          placeholder="Enter your skills"
+                          className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
+                        />
+                      </div>
+                    </>
+                  )}
+                  {role === "parent" && (
+                    <>
+                      <div className="mb-8">
+                        <label htmlFor="age" className="mb-3 block text-sm text-dark dark:text-white">
+                          Student name
+                        </label>
+                        <input
+                          type="text"
+                          name="age"
+                          value={formData.age}
+                          onChange={handleInputChange}
+                          placeholder="Enter your age"
+                          className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
+                        />
+                      </div>
+
+                      <div className="mb-8">
+                        <label htmlFor="gender" className="mb-3 block text-sm text-dark dark:text-white">
+                          Student Id
+                        </label>
+                        <input
+                          type="text"
+                          name="gender"
+                          value={formData.gender}
+                          onChange={handleInputChange}
+                          placeholder="Enter your student's id"
                           className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
                         />
                       </div>
