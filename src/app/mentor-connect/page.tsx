@@ -16,22 +16,37 @@ interface Mentor {
 const mentorsData: Mentor[] = [
   {
     id: 1,
+<<<<<<< HEAD
     image: "/images/about/prof1.webp",
     name: "Dadasaheb",
+=======
+    image: "/images/header/profile_icons.png",
+    name: "John Doe",
+>>>>>>> ab623a4d9a3e09be92e813ccd4b026e0a21b35ef
     qualification: "PhD in Computer Science",
     subjects: ["Data Structures", "Algorithms", "Machine Learning"],
   },
   {
     id: 2,
+<<<<<<< HEAD
     image: "/images/about/prof2.avif",
     name: "Anjali Rai",
+=======
+    image: "/images/header/profile_icons.png",
+    name: "Jane Smith",
+>>>>>>> ab623a4d9a3e09be92e813ccd4b026e0a21b35ef
     qualification: "M.Sc in Physics",
     subjects: ["Quantum Mechanics", "Thermodynamics", "Optics"],
   },
   {
     id: 3,
+<<<<<<< HEAD
     image: "/images/about/prof3.avif",
     name: "Ashmita Shelke",
+=======
+    image: "/images/header/profile_icons.png",
+    name: "Ashmit Shelke",
+>>>>>>> ab623a4d9a3e09be92e813ccd4b026e0a21b35ef
     qualification: "B.Tech in Computer Science",
     subjects: ["DSA", "React", "OS"],
   },

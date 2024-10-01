@@ -13,10 +13,10 @@ const Dashboard = () => {
 
   const StudentProfile = () => (
     <ProfileCard
-      name="Tripti Dimri"
+      name="Ashmit Shelke"
       college="Amity University"
-      email="tripteee77@yahoo.com"
-      imageUrl="/images/header/pfp.jpg" // Replace with the actual image path
+      email="ashmit.shelke3135@gmail.com"
+      imageUrl="/images/header/profile_icons.png" // Replace with the actual image path
     />
   );
 
