@@ -15,21 +15,21 @@ interface Mentor {
 const mentorsData: Mentor[] = [
   {
     id: 1,
-    image: "/api/placeholder/100/100",
+    image: "/images/header/profile_icons.png",
     name: "John Doe",
     qualification: "PhD in Computer Science",
     subjects: ["Data Structures", "Algorithms", "Machine Learning"],
   },
   {
     id: 2,
-    image: "/api/placeholder/100/100",
+    image: "/images/header/profile_icons.png",
     name: "Jane Smith",
     qualification: "M.Sc in Physics",
     subjects: ["Quantum Mechanics", "Thermodynamics", "Optics"],
   },
   {
     id: 3,
-    image: "/api/placeholder/100/100",
+    image: "/images/header/profile_icons.png",
     name: "Ashmit Shelke",
     qualification: "B.Tech in Computer Science",
     subjects: ["DSA", "React", "OS"],
