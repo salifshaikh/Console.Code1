@@ -271,7 +271,7 @@ const Dashboard = () => {
   const StudentDashboard = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       <Card title="Progress Tracker" icon={<CheckSquare />}>
-        <p>You've completed 75% of your courses</p>
+        <p>You have completed 75% of your courses</p>
       </Card>
       <Card title="Saved Resources" icon={<FileText />}>
         <p>5 PDFs saved from community</p>
@@ -280,7 +280,7 @@ const Dashboard = () => {
         <p>You have 1250 coins</p>
       </Card>
       <Card title="Starred Teachers" icon={<Star />}>
-        <p>You've starred 3 teachers</p>
+        <p>You have starred 3 teachers</p>
       </Card>
       <Card title="Upcoming Lessons" icon={<Calendar />}>
         <p>2 lessons scheduled this week</p>
@@ -299,7 +299,7 @@ const Dashboard = () => {
         <p>You have 45 active students</p>
       </Card>
       <Card title="Courses" icon={<Book />}>
-        <p>You're teaching 3 courses</p>
+        <p>You are teaching 3 courses</p>
       </Card>
       <Card title="Ratings" icon={<Star />}>
         <p>Your average rating: 4.8/5</p>
