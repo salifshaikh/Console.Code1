@@ -1,4 +1,7 @@
-interface Window {
-  google: any;
-  Razorpay: any;
+export {};
+declare global {
+  interface Window {
+    google : any;
+    Razorpay: any;
+  }
 }
