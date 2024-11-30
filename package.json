@@ -11,6 +11,7 @@
   "dependencies": {
     "@aashu-dubey/react-native-rating-bar": "^0.2.0",
     "@daily-co/daily-js": "^0.72.0",
+    "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
     "@jitsi/react-sdk": "^1.4.0",
     "@splinetool/react-spline": "^4.0.0",
     "@splinetool/runtime": "^1.9.28",
@@ -19,7 +20,7 @@
     "axios": "^1.7.7",
     "eslint": "^8.56.0",
     "eslint-config-next": "^14.1.0",
-    "firebase": "^10.14.0",
+    "firebase": "^10.14.1",
     "framer-motion": "^11.9.0",
     "lucide-react": "^0.446.0",
     "next": "^14.2.13",

@@ -1,9 +1,19 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth"; // For Authentication
 import { getFirestore } from "firebase/firestore"; // For Firestore 
-const firebaseConfig = { apiKey: "AIzaSyD9KgQwe0kAdnsY2t0QFykzwe6LSYlKkOI", authDomain: "codestorm-2024.firebaseapp.com", projectId: "codestorm-2024", storageBucket: "codestorm-2024.appspot.com", messagingSenderId: "990997196342", appId: "1:990997196342:web:f858086757e060a2287297" };
+import { getAnalytics } from "firebase/analytics";
+const firebaseConfig = {
+  apiKey: "AIzaSyAI6ZLf6DBoVadK6frfBDA9-WbmY_I08qY",
+  authDomain: "edulift-a7cb8.firebaseapp.com",
+  projectId: "edulift-a7cb8",
+  storageBucket: "edulift-a7cb8.appspot.com",
+  messagingSenderId: "151510430569",
+  appId: "1:151510430569:web:0c43c99e341f45a07ec3f8",
+  measurementId: "G-EFLZ08R5YV"
+};
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+const analytics = getAnalytics(app);
 
 export { app, auth };
