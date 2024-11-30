@@ -103,24 +103,25 @@ export default function ScholarshipFinderPage() {
         <div>
           <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Available Scholarships</h2>
           <ul className="space-y-2">
-            {availableScholarships.map((scholarship) => (
-              <div data-aos="fade-left">
-                <li key={scholarship.id} className="bg-gray-100 dark:bg-gray-700 p-4 rounded-md" data-aos="fade-in">
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white">{scholarship.name}</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  Max Income: ₹{scholarship.maxIncome.toLocaleString()}
-                </p>
-                <a
-                  href={scholarship.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200"
-                >
-                  Learn More
-                </a>
-              </li>
-              </div>
-            ))}
+          {availableScholarships.map((scholarship) => (
+  <div key={scholarship.id} data-aos="fade-left">
+    <li className="bg-gray-100 dark:bg-gray-700 p-4 rounded-md" data-aos="fade-in">
+      <h3 className="text-lg font-medium text-gray-900 dark:text-white">{scholarship.name}</h3>
+      <p className="text-sm text-gray-600 dark:text-gray-300">
+        Max Income: ₹{scholarship.maxIncome.toLocaleString()}
+      </p>
+      <a
+        href={scholarship.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200"
+      >
+        Learn More
+      </a>
+    </li>
+  </div>
+))}
+
           </ul>
         </div>
       )}
