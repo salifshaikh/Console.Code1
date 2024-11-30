@@ -30,20 +30,21 @@ const Hero = () => {
 
   const makePayment = async () => {
     const res = await initializeRazorpay();
-
+  
     if (!res) {
       alert("Razorpay SDK Failed to load");
       return;
     }
-
-    if (!donationAmount || isNaN(donationAmount) || donationAmount <= 0) {
+  
+    const amount = parseFloat(donationAmount);
+    if (!amount || isNaN(amount) || amount <= 0) {
       alert("Please enter a valid donation amount");
       return;
     }
-
+  
     const options = {
       key: "rzp_test_RtyUUL2QwvFazU", // Enter the Key ID generated from the Dashboard
-      amount: donationAmount * 100, // Amount is in currency subunits. Default currency is INR. Hence, 100 = ₹1.
+      amount: amount * 100, // Amount is in currency subunits. Default currency is INR. Hence, 100 = ₹1.
       currency: "INR",
       name: "Your Organization Name",
       description: "Donation",
@@ -63,10 +64,11 @@ const Hero = () => {
         color: "#3399cc",
       },
     };
-
+  
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
   };
+  
 
   return (
     <>
