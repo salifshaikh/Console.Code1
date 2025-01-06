@@ -217,7 +217,7 @@ const Footer = () => {
             <p className="text-center text-base text-body-color dark:text-white">
               Developed by Team -{" "}
               <a
-                href="http://uideck.com"
+                href="https://my-portfolio-gamma-nine-22.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-primary"
